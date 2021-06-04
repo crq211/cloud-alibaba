@@ -1,0 +1,47 @@
+踩坑
+
+最终父类的打包方式为 <packaging>pom</packaging>
+
+同时<parent>内容为 	
+	 <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>				springboot的版本
+    </parent>
+	
+	
+	
+	<groupId>com.crq</groupId>							这是分组id，子类都一样
+    <artifactId>cloud-alibaba</artifactId>				这是自身模块名
+    <version>1.0.0-SNAPSHOT</version>					这是版本号
+	
+	
+	 <modules>
+        <module>nacos-spring-cloud-config-example</module>
+        <module>nacos-spring-cloud-discovery-example</module>
+    </modules>													这是子模块
+	
+	
+	
+	 <properties>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+    </properties>																	这是cloud 和cloud alibaba 对应的版本 跟上面boot对应
+
+    config pom.xml配置
+      <parent>
+            <artifactId>cloud-alibaba</artifactId>              指定父类的唯一模块名
+            <groupId>com.crq</groupId>                          分组
+            <version>1.0.0-SNAPSHOT</version>
+        </parent>
+        <modelVersion>4.0.0</modelVersion>
+
+        <artifactId>nacos-spring-cloud-config-example</artifactId>      自身唯一模块名
+
+
+
+启动nacos服务
+
+     双击bin下面的 startup.cmd，访问 http://127.0.0.1:8848/nacos/
+
+
